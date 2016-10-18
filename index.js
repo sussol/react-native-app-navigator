@@ -27,7 +27,7 @@ const REPLACE_ACTION = 'replace';
 const REPLACE_PREVIOUS_AND_POP_ACTION = 'replacePreviousAndPop';
 const INITIAL_ACTION = 'initial';
 
-export class Navigator extends React.Component {
+export default class Navigator extends React.Component {
 
   constructor(props, context) {
     super(props, context);
