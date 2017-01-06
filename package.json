@@ -1,6 +1,6 @@
 {
   "name": "react-native-app-navigator",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A router/navigator for react native apps, based on NavigationExperimental, with a simpler interface",
   "repository": "https://github.com/sussol/react-native-app-navigator.git",
   "author": "Sustainable Solutions (NZ) Ltd.",

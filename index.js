@@ -180,6 +180,7 @@ function getNewNavState(currentState, action) {
         routes: [{ key: 'root', ...extraProps }],
       };
       break;
+    default: // If no nav type is passed through, assume it is a push
     case PUSH_ACTION:
       // Don't push route if route already in navState (two pushes can happen if user quickly
       // double taps a navigation button)
@@ -211,8 +212,6 @@ function getNewNavState(currentState, action) {
       newNavState = NavigationStateUtils.pop(newState);
       break;
     }
-    default:
-      newNavState = currentState;
   }
 
   return newNavState;
