@@ -126,7 +126,7 @@ export default class Navigator extends React.Component {
   }
 
   renderTitleComponent(props) {
-    const title = String(props.scene.route.title || '');
+    const title = String(props.scene.route.title || this.props.title || '');
     return (
       <NavigationHeader.Title>
         {title}
@@ -159,6 +159,7 @@ Navigator.propTypes = {
   navBarStyle: View.propTypes.style,
   backgroundColor: React.PropTypes.string,
   headerViewProps: React.PropTypes.object,
+  title: React.PropTypes.string,
 };
 
 /**
