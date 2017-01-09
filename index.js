@@ -220,7 +220,9 @@ function getNewNavState(currentState, action) {
 
 const WINDOW_WIDTH = Dimensions.get('window').width; // Used to centre the centreComponent
 const APPBAR_HEIGHT = Platform.OS === 'ios' ? 44 : 56; // Taken from NavigationExperimental
-const HORIZONTAL_MARGIN = Platform.OS === 'ios' ? 10 : 20;
+const RIGHT_AND_CENTRE_TOP_OFFSET = Platform.OS === 'ios' ? APPBAR_HEIGHT / 2 : 0;
+const HORIZONTAL_MARGIN = 20;
+const TRANSPARENT = 'rgba(0,0,0,0)';
 const localStyles = StyleSheet.create({
   main: {
     flex: 1,
@@ -233,8 +235,9 @@ const localStyles = StyleSheet.create({
   },
   rightAndCentreOuterContainer: {
     position: 'absolute',
-    top: 0,
+    top: RIGHT_AND_CENTRE_TOP_OFFSET,
     right: 0,
+    backgroundColor: TRANSPARENT,
   },
   rightAndCentreInnerContainer: {
     width: WINDOW_WIDTH * 0.75,
