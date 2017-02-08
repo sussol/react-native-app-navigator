@@ -21,7 +21,7 @@ const {
   StateUtils: NavigationStateUtils,
 } = NavigationExperimental;
 
-const BACK_ACTION = 'backAction';
+const BACK_ACTION = 'pop';
 const PUSH_ACTION = 'push';
 const REPLACE_ACTION = 'replace';
 const REPLACE_PREVIOUS_AND_POP_ACTION = 'replacePreviousAndPop';
