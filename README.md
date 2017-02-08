@@ -20,22 +20,43 @@ The Navigator is intended to be a container component, capturing your whole app.
 | headerViewProps       | object   | Props to pass through to the view enclosing the nav bar content                                                  |
 | title                 | string   | The label to display on the left of the nav bar (next to the back button, e.g. the page title)                   |
 
-### renderScene
+### renderScene(navigationProps)
 An important part of using react-native-app-navigator is implementing renderScene, the callback that dynamically defines the content within Navigator, given a route.
 
-The function takes in 
-Initial renderScene called with key 'root'
+The function takes in two arguments
+* route (object) - contains all the details about the scene to be rendered, with the following properties:
+    * key (string) - A unique key indicating what page/scene should be rendered. Before any navigation, this will be 'root', so renderScene should handle rendering the default page in this instance
+    * topRoute (boolean) - True if this scene is currently on the top of the navigation stack (being rendered)
+    * Any additional properties that were provided in the ```navigationAction``` passed to ```onNavigate``` (other than those used by Navigator, see below)
+* onNavigate (function(key, title, extraProps, navType)) - a function that can be called to navigate to a different scene, taking a single ```navigationAction``` parameter defining the navigation. This ```navigationAction``` is an object with the following properties:
+    * key (string, required) - A unique key indicating what page/scene is being navigated to. This is generally used in renderScene to determine what to render
+    * title (string, optional) - A string to display on the left of the navigation bar after navigating (e.g. the title of the new page)
+    * extraProps (object, optional) - Any additional properties that are simply passed through as extra properties in the ```route``` given to ```renderScene```. A good way to get information from the parent page to the child in the form of props
+    * navType (string, optional) - Optionally define what kind of navigation action this is. Defaults to a push. Options are:
+        * ```push``` - Adds a new scene on to the stack and navigates to it
+        * ```pop``` - Removes the top scene from the stack, navigating to the one just below
+        * ```replace``` - Adds a new scene on to the stack, navigates to it, and removes the current top one
+        * ```replacePreviousAndPop``` - Replaces the scene one below the top with a new scene and pops the current scene to navigate to the new one
+
+Note: Initial renderScene is called with a route having the key 'root', so renderScene should handle rendering the default page in this instance
 
 ```
   /**
   * Returns either the Home page or the Calendar page, depending on the route (with any extra props passed on to CalendarPage)
   **/
-  renderScene(props) {
-    const { key, ...extraProps } = props.scene.route;
+  renderScene(route, onNavigate) {
+    const { key, ...extraProps } = route;
     switch (key) {
       default:
       case 'root':
-        return <HomePage />;
+        return (
+          <HomePage handleTappingMonth={(month) => {
+            onNavigate(
+              'calender', 
+              month, 
+              { monthToDisplay: month, backgroundImage: this.props.backgroundImage }
+            )}} 
+           />);
       case 'calendar':
         return <CalendarPage {...extraProps} />;
     }
