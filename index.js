@@ -101,7 +101,7 @@ export default class Navigator extends React.Component {
   }
 
   /**
-   * Return the right component provided by the renderRightComponent functin in
+   * Return the right component provided by the renderRightComponent function in
    * the navigation state, if there is one. Failing that, if a renderRightComponent
    * function was passed in through props, return the result.
    * @return {[type]} [description]
@@ -120,7 +120,7 @@ export default class Navigator extends React.Component {
   renderScene(props) {
     return (
       <View style={[localStyles.main, props.style]}>
-        {this.props.renderScene({ onNavigate: this.onNavigate, ...props })}
+        {this.props.renderScene(props.scene.route, this.onNavigate)}
       </View>
     );
   }
