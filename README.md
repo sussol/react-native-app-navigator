@@ -1,5 +1,17 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Installation](#installation)
+- [Why Use](#why-use)
+- [Usage](#usage)
+  - [Props](#props)
+  - [renderScene(navigationProps)](#renderscenenavigationprops)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 #react-native-app-navigator
-Easily set up navigation within your app: react-native-app-navigator allows pushing and popping scenes based on a centrally maintained stack of routes, all the while showing a customisable navigation bar. 
+Easily set up navigation within your app: react-native-app-navigator allows pushing and popping scenes based on a centrally maintained stack of routes, all the while showing a customisable navigation bar.
 
 react-native-app-navigator is built as a wrapper around React Native's [NavigationExperimental](http://facebook.github.io/react-native/docs/navigation.html#navigationexperimental). It makes some of the decisions for you and uses a generic reducer, providing a simpler interface and a couple of extra treats.
 
@@ -11,7 +23,7 @@ react-native-app-navigator is built as a wrapper around React Native's [Navigati
 * Provides easily customisable navigation bar across the app and/or for specific pages - just pass through functions as props to render the centre and right components
 * Extra props can be seamlessly passed through from parent to child scene, as an argument in the call to onNavigate
 * Every scene can check a prop ```topRoute``` to check if it is currently at the top of the navigation stack
-* 
+*
 
 ## Usage
 The Navigator is intended to be a container component, capturing your whole app. It retains some of the mechanisms of NavigationExperimental, such as passing in a ```renderScene``` function to dynamically define the contents of a given route, as well as a few extra things.
@@ -19,7 +31,7 @@ The Navigator is intended to be a container component, capturing your whole app.
 ### Props
 | Prop Name             | Type     | Description                                                                                                                                                                                                             |
 | --------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| renderScene           | function | A callback that dynamically defines the content within Navigator, given a route. Details [below](#renderScene(navigationProps)).                                                                                        |
+| renderScene           | function | A callback that dynamically defines the content within Navigator, given a route. Details [below](#renderscenenavigationprops).                                                                                        |
 | navBarStyle           | style    | Will override styling of the NavigationHeader (top nav bar)                                                                                                                                                             |
 | renderRightComponent  | function | Optional callback that defines what is at the right of the nav bar (e.g. a logout button) N.B. will be overridden by any renderCentreComponent passed through within the extraProps argument to onNavigate (see below)                                                                                                                               |
 | renderCentreComponent | function | Optional callback that defines what is in the middle of the nav bar (e.g. a company logo). |
@@ -59,10 +71,10 @@ Note: Initial renderScene is called with a route having the key 'root', so rende
         return (
           <HomePage handleTappingMonth={(month) => {
             onNavigate(
-              'calender', 
-              month, 
+              'calender',
+              month,
               { monthToDisplay: month, backgroundImage: this.props.backgroundImage }
-            )}} 
+            )}}
            />);
       case 'calendar':
         return <CalendarPage {...extraProps} />;
