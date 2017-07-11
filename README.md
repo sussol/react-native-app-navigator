@@ -1,7 +1,10 @@
 #react-native-app-navigator
+
+Note: This packaged depends on NavigationExperimental, which is a deprecated library, and may not work with newer versions of React Native
+
 Easily set up navigation within your app: react-native-app-navigator allows pushing and popping scenes based on a centrally maintained stack of routes, all the while showing a customisable navigation bar.
 
-react-native-app-navigator is built as a wrapper around React Native's [NavigationExperimental](http://facebook.github.io/react-native/docs/navigation.html#navigationexperimental). It makes some of the decisions for you and uses a generic reducer, providing a simpler interface and a couple of extra treats.
+react-native-app-navigator is built as a wrapper around React Native's (now deprecated) NavigationExperimental. It makes some of the decisions for you and uses a generic reducer, providing a simpler interface and a couple of extra treats.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->

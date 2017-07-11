@@ -10,10 +10,10 @@ import {
   BackAndroid,
   Dimensions,
   Platform,
-  NavigationExperimental,
   StyleSheet,
   View,
 } from 'react-native';
+import NavigationExperimental from 'navigation-experimental-fork';
 
 const {
   CardStack: NavigationCardStack,
